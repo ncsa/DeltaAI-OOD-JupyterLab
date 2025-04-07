@@ -40,8 +40,8 @@ attributes:
   bc_partition:
     label: "Partition"
     widget: "select"
-    value: "cpu-interactive"
-    help: "Interactive partitions are limited to one hour."
+    value: "ghx4-interactive"
+    help: "Interactive partitions are limited to 2 hours."
     options:
 #      - ["cpu-interactive","cpu-interactive"]
 #      - ["gpuA100x4-interactive","gpuA100x4-interactive"]
@@ -49,8 +49,8 @@ attributes:
 #      - ["cpu","cpu"]
 #      - ["gpuA100x4","gpuA100x4"]
 #      - ["gpuA40x4","gpuA40x4"]
-      - ["test","test"]
       - ["ghx4","ghx4"]
+      - ["ghx4-interactive","ghx4-interactive"]
 
   bc_num_slots:
     label: "Number of CPUs"
