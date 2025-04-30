@@ -29,7 +29,7 @@ attributes:
   bc_account:
     label: "Name of account"
     widget: "text_field"
-    help: "Chargeable account of the form abcd-delta-cpu or abcd-delta-gpu. Replace abcd with your allocation code."
+    help: "Chargeable account of the form abcd-dtai-gh. Replace abcd with your allocation code."
     value: ""
   
   bc_reservation:
