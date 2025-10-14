@@ -2,6 +2,17 @@
 #
 # @note Used to define the submitted cluster, title, description, and
 #   hard-coded/user-defined attributes that make up this Batch Connect app.
+<%-
+  require 'open3'
+
+  def get_available_accounts()
+    cmd = "sacctmgr -nP show assoc format=account where user=#{CurrentUser.name}"
+    stdout, stderr, status = Open3.capture3(cmd)
+    accounts = stdout.split("\n")
+    accounts.delete("noalloc")
+    accounts
+  end
+%>
 ---
 
 # **MUST** set cluster id here that matches cluster configuration file located
@@ -28,9 +39,13 @@ attributes:
   
   bc_account:
     label: "Name of account"
-    widget: "text_field"
-    help: "Chargeable account of the form abcd-dtai-gh. Replace abcd with your allocation code."
-    value: ""
+    widget: "select"
+    required: true
+    help: "Select the account you would like to charge this job to."
+    options:
+      <%- get_available_accounts().each do |account| %>
+      - ["<%= account %>", "<%= account %>"]
+      <%- end %>
   
   bc_reservation:
     label: "Name of reservation (leave empty if none)"
